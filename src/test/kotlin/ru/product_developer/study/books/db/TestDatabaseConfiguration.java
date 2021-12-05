@@ -1,6 +1,8 @@
 package ru.product_developer.study.books.db;
 
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseDataSource;
+import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,14 +16,14 @@ public class TestDatabaseConfiguration {
 
     @Bean
     @Primary
-    DataSource dataSource(final GenericContainer postgreSQLContainer) {
+    DataSource dataSource(final GenericContainer postgreSQLContainer, final DataSourceProperties dataSourceProperties) {
         return DataSourceBuilder.create()
                 .driverClassName("org.postgresql.Driver")
                 .url("jdbc:postgresql://localhost:"
                         + postgreSQLContainer.getMappedPort(5432)
                         + "/postgres?currentSchema=books_schema")
-                .username("books_app")
-                .password("apppassword")
+                .username(dataSourceProperties.getUsername())
+                .password(dataSourceProperties.getPassword())
                 .build();
     }
 
@@ -36,14 +38,14 @@ public class TestDatabaseConfiguration {
 
     @Bean
     @LiquibaseDataSource
-    public DataSource liquibaseDataSource(final GenericContainer postgreSQLContainer) {
+    public DataSource liquibaseDataSource(final GenericContainer postgreSQLContainer, final LiquibaseProperties liquibaseProperties) {
         return DataSourceBuilder.create()
                 .driverClassName("org.postgresql.Driver")
                 .url("jdbc:postgresql://localhost:"
                         + postgreSQLContainer.getMappedPort(5432)
                         + "/postgres?currentSchema=books_schema")
-                .username("books_owner")
-                .password("ownerpassword")
+                .username(liquibaseProperties.getUser())
+                .password(liquibaseProperties.getPassword())
                 .build();
     }
 }
