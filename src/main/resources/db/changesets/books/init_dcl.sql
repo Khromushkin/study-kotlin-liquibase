@@ -1,0 +1,1 @@
+﻿grant insert,update,select on books_schema.books to books_app;

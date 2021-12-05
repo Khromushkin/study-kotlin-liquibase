@@ -1,7 +1,14 @@
 spring:
   application.name: study-kotlin-liquibase
+  profiles.active: dev
+  datasource:
+    url: "jdbc:postgresql://localhost:5433/postgres?currentSchema=books_schema"
+    username: "books_app"
+    password: "apppassword"
 
-database:
-  jdbcUrl: ${secret.liquibase.jdbcUrl:}
-  user: ${secret.liquibase.user:}
-  password: ${secret.liquibase.password:}
+  liquibase:
+    enabled: true
+    user: "books_owner"
+    password: "ownerpassword"
+    url: "jdbc:postgresql://localhost:5433/postgres?currentSchema=books_schema"
+    change-log: "classpath:/db/changelog-master.yaml"

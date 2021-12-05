@@ -1,13 +1,5 @@
 spring:
   application:
-    name: study-kotlin-liquibase
+    name: study-books
   profiles:
-    active: ${ENVIRONMENT_PROFILE_NAME:dev}
-
-qiwi:
-  common:
-    autodiscovery: none
-    product:
-      name: study
-    config: none
-    secret: vault
+    active: dev

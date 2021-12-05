@@ -1,12 +1,12 @@
-CREATE ROLE test_service_name_user WITH LOGIN PASSWORD 'secretpassword' NOSUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION;
-CREATE ROLE test_service_name WITH NOLOGIN;
+CREATE ROLE books_owner WITH LOGIN PASSWORD 'ownerpassword' NOSUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION;
+CREATE ROLE books WITH NOLOGIN;
 
-create schema test_service_name AUTHORIZATION test_service_name_user;
-GRANT ALL ON SCHEMA test_service_name to test_service_name_user;
-grant usage on schema test_service_name to test_service_name_user;
-ALTER ROLE test_service_name_user SET search_path TO test_service_name,pg_catalog,public;
+create schema books_schema AUTHORIZATION books_owner;
+GRANT ALL ON SCHEMA books_schema to books_owner;
+grant usage on schema books_schema to books_owner;
+ALTER ROLE books_owner SET search_path TO books_schema,pg_catalog,public;
 
-CREATE USER test_service_name_app WITH LOGIN PASSWORD 'secretpassword' NOSUPERUSER INHERIT NOREPLICATION;
-GRANT USAGE ON SCHEMA test_service_name to test_service_name_app;
+CREATE USER books_app WITH LOGIN PASSWORD 'apppassword' NOSUPERUSER INHERIT NOREPLICATION;
+GRANT USAGE ON SCHEMA books_schema to books_app;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

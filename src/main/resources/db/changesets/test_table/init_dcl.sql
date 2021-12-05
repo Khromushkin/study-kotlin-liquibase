@@ -1,1 +1,0 @@
-﻿grant insert,update,select on test_service_name.test_table to test_service_name_app;
