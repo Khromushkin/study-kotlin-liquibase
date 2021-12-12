@@ -16,7 +16,7 @@ class BooksDaoImpl(private val jdbcTemplate: JdbcTemplate) : BooksDao {
     }
 
     override fun getBookByUid(uid: String): BookModel {
-        return jdbcTemplate.queryForObject("select uid, name, author from books where uid = ?::uuid", bookRowMapper, uid)
+        return jdbcTemplate.queryForObject("select uid, name, author from books where uid = ?::uuid", bookRowMapper, uid)!!
     }
 
     override fun saveBook(name: String, author: String): BookModel {

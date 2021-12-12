@@ -19,10 +19,10 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: "n.khromushkin"
-      context: dev
+      context: test
       changes:
         - sqlFile:
-            path: db/changesets/books/init_dml_dev.sql
+            path: db/changesets/books/init_dml_test.sql
             endDelimiter: "\n;"
       rollback:
   - changeSet:
