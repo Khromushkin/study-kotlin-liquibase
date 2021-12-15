@@ -18,30 +18,6 @@ Or you can create a full package and launch it from any place:
 mvn clean package && java -jar target/study-kotlin-liquibase.jar
 ```
 
-
-#### Verify, build and deploy ####
-
-You can verify project by running
-```
-make verify
-```
-
-If you want to build a Docker image with this project, you can run this:
-```
-make build
-```
-
-or to build an image and push it to the Docker registry (default is dcr.domain:
-```
-make DOCKER_REGISTRY=dcr.domainVERSION_SUFFIX='-12345' build_push
-```
-
-If you need to deploy image to the Kubernetes cluster, use the following command:
-```
-make IMAGE=dcr.domainstudy-kotlin-liquibase:1.0.0-12345 deploy
-```
-
-
 #### Built With ####
 
 * [Spring Boot](https://projects.spring.io/spring-boot/) - Framework for easy bootstrapping and developing new Spring applications.
