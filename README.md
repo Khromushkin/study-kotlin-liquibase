@@ -3,7 +3,12 @@
 
 #### What is this repository for? ####
 
-This software is for SpringLiquibase usage demonstration with Kotlin.
+This software is for Engineering practices demonstration:
+
+* Local database development by using Docker;
+* Database versioning by using Liquibase;
+* SpringLiquibase integration;
+* DAO TDD by using TestContainers.
 
 #### How do I get set up? ####
 
