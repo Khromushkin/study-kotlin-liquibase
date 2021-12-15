@@ -33,4 +33,4 @@ mvn clean package && java -jar target/study-kotlin-liquibase.jar
 
 
 #### TODO ####
-* Remove qiwi-common-platform dependency and add Travis CI integration
+* Add Travis CI or GH Actions pipeline
